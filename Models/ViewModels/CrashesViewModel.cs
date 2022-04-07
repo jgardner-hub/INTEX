@@ -9,7 +9,7 @@ namespace INTEX.Models.ViewModels
     {
         public List<Crash> Crashes { get; set; }
         public PageInfo PageInfo { get; set; }
-
+        public bool ShowHiddenLinks { get; set; }
 
     }
 }

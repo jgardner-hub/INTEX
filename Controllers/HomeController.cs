@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace INTEX.Controllers
 {
@@ -133,13 +134,17 @@ namespace INTEX.Controllers
             return View(x);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminCrashSummary(string county, int pageNum = 1)
         {
+            //var myVm = new AdminViewModel();
+            //myVm.ShowHiddenLinks = true;
+            ////ViewBag.myVm = myVm;
             int pageSize = 100;
 
             var x = new CrashesViewModel
             {
+                ShowHiddenLinks = true,
                 Crashes = _context.crashdata
                 .Where(c => c.COUNTY_NAME == county || county == null)
                 .OrderByDescending(c => c.CRASH_DATE)
