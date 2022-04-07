@@ -2,6 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 :root {
     --ourblue: #5a87c5;
+    --lightback:#c6c2be;
     --ourgray: #999490;
     --ourdarkgray: #333333;
     --ourorange: #ee7623;
@@ -92,7 +93,7 @@ body, html {
 }
 
 body {
-    background-color: var(--ourgray);
+    background-color: var(--lightback);
 }
 
 nav {
@@ -114,6 +115,18 @@ header {
     border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
+.intexdot {
+    background-image: url('../img/udot-logo.png');
+    background-position: center center;
+    width: 185px;
+    height: 48px;
+    color:transparent;
+}
+
+.footer {
+    position:relative;
+}
+
 .landing-header {
     text-decoration: underline;
     text-decoration-color: var(--ourorange);
@@ -125,7 +138,7 @@ header {
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 0.25rem;
     padding: 20px;
-    margin: 10px 50px 10px;
+    margin: 35px;
     background-color: white;
 }
 
@@ -136,7 +149,7 @@ header {
 }
 
 .pimg1 {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/ed-259-xcrI6CPkkJs-unsplash.jpg');
+    background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url('../img/main-back.jpg');
     min-height: 600px;
     width: 100vw;
     position: relative;
@@ -146,6 +159,35 @@ header {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.pimg1::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 110px;
+    background-image: url('../img/mtns-top-lite.svg');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center bottom;
+}
+
+.pimg1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100px;
+    background-image: url('../img/mtns-top.svg');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center bottom;
+}
+
+
+
 
 .ptext {
     position: absolute;
