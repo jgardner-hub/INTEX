@@ -1,0 +1,70 @@
+﻿:root {
+    --ourblue: #5a87c5;
+    --ourgray: #999490;
+    --ourdarkgray: #333333;
+    --ourorange: #ee7623;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--ourgray);
+}
+
+.pagesection {
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    padding: 20px;
+    margin: 10px 50px 10px;
+    background-color: white;
+}
+
+.filterbox {
+    display: grid;
+    justify-items: stretch;
+    row-gap: 2px;
+}
+
+.pimg1 {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/ed-259-xcrI6CPkkJs-unsplash.jpg');
+    min-height: 550px;
+    width: 100vw;
+    position: relative;
+    opacity: 0.70;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.ptext {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+
+
+
+
+/*
+    Overwrite Bootstrap
+*/
+
+.btn-primary {
+    background-color: var(--ourblue);
+    border: var(--ourblue);
+}
+
+
+

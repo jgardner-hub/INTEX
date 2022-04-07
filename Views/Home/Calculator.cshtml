@@ -1,0 +1,104 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Calculator";
+}
+@model CrashData
+<div class="ourhead">
+
+</div>
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Calculator Page</h1>
+</div>
+<div class="row pagesection">
+
+    <div class="col-7">
+        <form method="post" asp-controller="Home" asp-action="Calculator">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <h1>Fill Out All of the Crash Info to Predict Crash Severity:</h1>
+            <label asp-for="@Model.milepoint">Milepoint Location (1.0-550.0):</label>
+            <input asp-for="@Model.milepoint" placeholder="i.e. 445.5" /><br />
+            <br />
+            <label asp-for="@Model.lat_utm_y">Latitude (in decimal form):</label>
+            <input asp-for="@Model.lat_utm_y" placeholder="i.e. 4650840.961" /><br />
+            <br />
+            <label asp-for="@Model.long_utm_x">Longitude (in decimal form):</label>
+            <input asp-for="@Model.long_utm_x" placeholder="i.e. 427714.0392" /><br />
+            <br />
+            <label asp-for="@Model.work_zone_related" id="work_zone_related">Work Zone Related:</label>
+            <input asp-for="@Model.work_zone_related" id="RadioButton1" type="radio" name="work_zone_related" value="1.0" />Yes
+            <input asp-for="@Model.work_zone_related" id="RadioButton2" type="radio" name="work_zone_related" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.pedestrian_involved" id="pedestrian_involved">Pedestrian Involved:</label>
+            <input asp-for="@Model.pedestrian_involved" id="RadioButton1" type="radio" name="pedestrian_involved" value="1.0" />Yes
+            <input asp-for="@Model.pedestrian_involved" id="RadioButton2" type="radio" name="pedestrian_involved" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.bicyclist_involved" id="bicyclist_involved">Bicyclist Involved:</label>
+            <input asp-for="@Model.bicyclist_involved" id="RadioButton1" type="radio" name="bicyclist_involved" value="1.0" />Yes
+            <input asp-for="@Model.bicyclist_involved" id="RadioButton2" type="radio" name="bicyclist_involved" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.motorcycle_involved" id="motorcycle_involved">Motorcycle Involved:</label>
+            <input asp-for="@Model.motorcycle_involved" id="RadioButton1" type="radio" name="motorcycle_involved" value="1.0" />Yes
+            <input asp-for="@Model.motorcycle_involved" id="RadioButton2" type="radio" name="motorcycle_involved" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.unrestrained" id="unrestrained">Unrestrained:</label>
+            <input asp-for="@Model.unrestrained" id="RadioButton1" type="radio" name="unrestrained" value="1.0" />Yes
+            <input asp-for="@Model.unrestrained" id="RadioButton2" type="radio" name="unrestrained" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.intersection_related" id="intersection_related">Intersection Related:</label>
+            <input asp-for="@Model.intersection_related" id="RadioButton1" type="radio" name="intersection_related" value="1.0" />Yes
+            <input asp-for="@Model.intersection_related" id="RadioButton2" type="radio" name="intersection_related" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.overturn_rollover" id="overturn_rollover">Overturn/Rollover:</label>
+            <input asp-for="@Model.overturn_rollover" id="RadioButton1" type="radio" name="overturn_rollover" value="1.0" />Yes
+            <input asp-for="@Model.overturn_rollover" id="RadioButton2" type="radio" name="overturn_rollover" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.teenage_driver_involved" id="teenage_driver_involved">Teenage Driver Involved:</label>
+            <input asp-for="@Model.teenage_driver_involved" id="RadioButton1" type="radio" name="teenage_driver_involved" value="1.0" />Yes
+            <input asp-for="@Model.teenage_driver_involved" id="RadioButton2" type="radio" name="teenage_driver_involved" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.older_driver_involved" id="older_driver_involved">Older Driver Involved:</label>
+            <input asp-for="@Model.older_driver_involved" id="RadioButton1" type="radio" name="older_driver_involved" value="1.0" />Yes
+            <input asp-for="@Model.older_driver_involved" id="RadioButton2" type="radio" name="older_driver_involved" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.night_dark_condition" id="night_dark_condition">Night/Dark Conditions:</label>
+            <input asp-for="@Model.night_dark_condition" id="RadioButton1" type="radio" name="night_dark_condition" value="1.0" />Yes
+            <input asp-for="@Model.night_dark_condition" id="RadioButton2" type="radio" name="night_dark_condition" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.single_vehicle" id="single_vehicle">Single Vehicle Accident:</label>
+            <input asp-for="@Model.single_vehicle" id="RadioButton1" type="radio" name="single_vehicle" value="1.0" />Yes
+            <input asp-for="@Model.single_vehicle" id="RadioButton2" type="radio" name="single_vehicle" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.distracted_driving" id="distracted_driving">Distracted Driving:</label>
+            <input asp-for="@Model.distracted_driving" id="RadioButton1" type="radio" name="distracted_driving" value="1.0" />Yes
+            <input asp-for="@Model.distracted_driving" id="RadioButton2" type="radio" name="distracted_driving" value="0.0" checked />No
+            <br />
+            <label asp-for="@Model.roadway_departure" id="roadway_departure">Roadway/Departure Area:</label>
+            <input asp-for="@Model.roadway_departure" id="RadioButton1" type="radio" name="roadway_departure" value="1.0" />Yes
+            <input asp-for="@Model.roadway_departure" id="RadioButton2" type="radio" name="roadway_departure" value="0.0" checked />No
+            <br />
+            <br />
+            <label asp-for="@Model.month">Month of the Year (1=January, 12=December, etc.):</label>
+            <input asp-for="@Model.month" placeholder="Enter a number from 1-12" size="25" /><br />
+            <br />
+            <label asp-for="@Model.hour">Hour of the Day (2=2:00:00 AM, 14=2:00:00 PM, etc.):</label>
+            <input asp-for="@Model.hour" placeholder="Enter a number from 1-24" size="25" /><br />
+            <br />
+
+            <button type="submit">Predict Crash Severity ID</button>
+        </form>
+
+    </div>
+    <div class="col-5">
+        <div class="card calc-card">
+            <div class="card-body">
+                <h5 class="card-title">Calculator</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Crash Severity Rating:</h6>
+                <p class="card-text text-danger">@ViewBag.predictedvalue</p>
+            </div>
+        </div>
+    </div>
+</div>

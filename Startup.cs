@@ -1,4 +1,5 @@
 using INTEX.Data;
+using INTEX.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +29,23 @@ namespace INTEX
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddDbContext<CrashesDbContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:CrashesDbConnection"]);
+
+            });
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("Models/onnx_intex_model.onnx")
+            );
+
             services.AddRazorPages();
         }
 
@@ -61,9 +74,21 @@ namespace INTEX
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                    name: "countypage",
+                    pattern: "Home/CrashSummary/{county}/pg{pageNum}",
+                    new { Controller = "Home", action = "CrashSummary" });
+
+                endpoints.MapControllerRoute("Paging",
+                    "Home/CrashSummary/pg{pageNum}",
+                    new { Controller = "Home", action = "CrashSummary", pageNum = 1 });
+
+                endpoints.MapControllerRoute("county",
+                    "Home/CrashSummary/{county}",
+                    new { Controller = "Home", action = "CrashSummary", pageNum = 1 });
+
+
+
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
