@@ -32,10 +32,10 @@
                         <li class="nav-item">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                if (User.IsInRole("Admin"))
-                                {
+                                @*if (User.IsInRole("Admin"))
+                                {*@
                                     <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Admin</a>
-                                }
+                                @*}*@
                             }
 
                         </li>
