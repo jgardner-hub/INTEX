@@ -133,6 +133,7 @@ namespace INTEX.Controllers
             return View(x);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminCrashSummary(string county, int pageNum = 1)
         {
             int pageSize = 100;
