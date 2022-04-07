@@ -28,13 +28,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddCrash">Add Crash</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Admin Summary of Crashes</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Admin</a>
+                                }
+                            }
+
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Calculator">Calculator</a>
-                        </li>
-                    </ul>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Calculator">Calculator</a>
+                            </li>
+                        </ul>
                 </div>
             </div>
         </nav>
