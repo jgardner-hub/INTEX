@@ -15,27 +15,27 @@
                 <vc:filters></vc:filters>
             </div>
             <div class="col-10">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" style="background-color: white; border: 2px solid; border-radius: 20px; border-style: hidden; box-shadow: 0 0 0 3px #5A87C5">
 
                     <thead class="font-weight-bold">
                         <tr>
-                            <td>Crash Id</td>
-                            <td>Crash Date</td>
-                            <td>County</td>
-                            <td>Crash Severity</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">Crash Id</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">Crash Date</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">County</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">Crash Severity</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var c in Model.Crashes)
                         {
                             <tr>
-                                <td>@c.CRASH_ID</td>
-                                <td>@c.CRASH_DATE</td>
-                                <td>@c.COUNTY_NAME</td>
-                                <td>@c.CRASH_SEVERITY_ID</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_ID</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_DATE</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.COUNTY_NAME</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_SEVERITY_ID</td>
 
-                                <td><a asp-controller="Home" asp-action="Edit" asp-route-CrashId="@c.CRASH_ID">Edit</a></td>
-                                <td><a asp-controller="Home" asp-action="Delete" asp-route-CrashId="@c.CRASH_ID">Delete</a></td>
+                                <td style="border: 2px solid; border-color: #5A87C5"><a class="edit-delete" asp-controller="Home" asp-action="Edit" asp-route-CrashId="@c.CRASH_ID">Edit</a></td>
+                                <td style="border: 2px solid; border-color: #5A87C5"><a class="edit-delete" asp-controller="Home" asp-action="Delete" asp-route-CrashId="@c.CRASH_ID">Delete</a></td>
                             </tr>
                         }
                     </tbody>

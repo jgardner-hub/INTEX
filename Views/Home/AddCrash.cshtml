@@ -42,10 +42,10 @@
             <input asp-for=@Model.LONG_UTM_X placeholder="i.e. 427715.032" /><br />
 
             <label asp-for=@Model.MAIN_ROAD_NAME>Main Road Name:</label>
-            <input asp-for=@Model.MAIN_ROAD_NAME placeholder="i.e. 700 W 12300 S" /><br />
+            <input asp-for=@Model.MAIN_ROAD_NAME placeholder="i.e. 700 W 12300 S" oninput="this.value = this.value.toUpperCase()"/><br />
 
             <label asp-for=@Model.CITY>City:</label>
-            <input asp-for=@Model.CITY placeholder="LOGAN" /><br />
+            <input asp-for=@Model.CITY placeholder="LOGAN" oninput="this.value = this.value.toUpperCase()"/><br />
 
             <label asp-for=@Model.COUNTY_NAME>County:</label>
             <select asp-for="@Model.COUNTY_NAME">

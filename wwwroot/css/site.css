@@ -235,3 +235,20 @@ header {
     background-color: var(--ourblue);
     border: var(--ourblue);
 }
+
+
+
+/*
+    table schtuff
+
+*/
+
+.edit-delete {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.edit-delete:hover {
+    text-decoration-color: var(--ourorange);
+    text-decoration-thickness: .2em;
+}
