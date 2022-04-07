@@ -176,6 +176,29 @@ namespace INTEX.Controllers
             var prediction = new Prediction { PredictedValue = score.First() };
             ViewBag.predictedvalue = prediction.PredictedValue;
             ViewBag.predictedvalue = Math.Round(ViewBag.PredictedValue);
+
+            if (ViewBag.predictedvalue == 1)
+            {
+                ViewBag.resulttext = "No Injury";
+            }
+            else if (ViewBag.predictedvalue == 2)
+            {
+                ViewBag.resulttext = "Possible Injury";
+            }
+            else if (ViewBag.predictedvalue == 3)
+            {
+                ViewBag.resulttext = "Suspected Minor Injury";
+            }
+            else if (ViewBag.predictedvalue == 4)
+            {
+                ViewBag.resulttext = "Suspected Major Injury";
+            }
+            else
+            {
+                ViewBag.resulttext = "Fatal";
+            }
+
+
             result.Dispose();
 
             return View(data);

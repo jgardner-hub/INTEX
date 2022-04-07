@@ -18,7 +18,7 @@
     <div class="col-7">
         <form method="post" asp-controller="Home" asp-action="Calculator">
             <div class="text-danger" asp-validation-summary="All"></div>
-            <h1>Fill Out All of the Crash Info to Predict Crash Severity:</h1>
+            <h1>Fill Out All of the Crash Info to Predict Crash Severity:</h1><br />
             <label asp-for="@Model.milepoint">Milepoint Location (1.0-550.0):</label>
             <input asp-for="@Model.milepoint" placeholder="i.e. 445.5" /><br />
             <br />
@@ -95,9 +95,23 @@
     <div class="col-5">
         <div class="card calc-card">
             <div class="card-body">
-                <h5 class="card-title">Calculator</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Crash Severity Rating:</h6>
-                <p class="card-text text-danger">@ViewBag.predictedvalue</p>
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Calculator</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Crash Severity Rating:</h6>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="card-text text-danger">@ViewBag.predictedvalue</h4>
+                        <p class="card-text text-danger"><b>@ViewBag.resulttext</b></p>
+                    </div>
+                </div>
+
+
+                <br /><br /><br /><br />
+                <p class="card-text">
+                    1= No Injury <br /> 2= Possible Injury <br /> 3= Suspected Minor Injury <br />
+                    4= Suspected Serious Injury <br /> 5= Fatal<br />
+                </p>
             </div>
         </div>
     </div>
