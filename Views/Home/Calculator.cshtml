@@ -95,10 +95,19 @@
     <div class="col-5">
         <div class="card calc-card">
             <div class="card-body">
-                <h5 class="card-title">Calculator</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Crash Severity Rating:</h6>
-                <p class="card-text text-danger">@ViewBag.predictedvalue</p>
-                <p class="card-text"><b>@ViewBag.resulttext</b></p>
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Calculator</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Crash Severity Rating:</h6>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="card-text text-danger">@ViewBag.predictedvalue</h4>
+                        <p class="card-text text-danger"><b>@ViewBag.resulttext</b></p>
+                    </div>
+                </div>
+
+
+                <br /><br /><br /><br />
                 <p class="card-text">
                     1= No Injury <br /> 2= Possible Injury <br /> 3= Suspected Minor Injury <br />
                     4= Suspected Serious Injury <br /> 5= Fatal<br />
