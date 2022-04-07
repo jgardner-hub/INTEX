@@ -46,7 +46,7 @@ namespace INTEX
 
             });
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("wwwroot/onnx_intex_model.onnx")
+                new InferenceSession("onnx_intex_model.onnx")
             );
 
             services.AddRazorPages();
