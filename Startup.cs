@@ -32,8 +32,6 @@ namespace INTEX
 
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
             {
                 options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
 
