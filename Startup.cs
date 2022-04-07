@@ -86,9 +86,8 @@ namespace INTEX
                     "Home/CrashSummary/{county}",
                     new { Controller = "Home", action = "CrashSummary", pageNum = 1 });
 
-
-
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }
