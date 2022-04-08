@@ -42,7 +42,7 @@ namespace INTEX
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("IdentityDBConnection"));
 
             });
 
@@ -67,7 +67,7 @@ namespace INTEX
 
             services.AddDbContext<CrashesDbContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:CrashesDbConnection"]);
+                options.UseMySql(Environment.GetEnvironmentVariable("CrashesDBConnection"));
 
             });
             services.AddSingleton<InferenceSession>(
