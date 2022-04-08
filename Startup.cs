@@ -29,17 +29,31 @@ namespace INTEX
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
 
             });
 
+
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 12;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
             services.AddControllersWithViews();
+
             services.AddDbContext<CrashesDbContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:CrashesDbConnection"]);
@@ -52,8 +66,37 @@ namespace INTEX
             services.AddRazorPages();
         }
 
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            IdentityResult roleResult;
+            //Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+
+            var roleCheck2 = await RoleManager.RoleExistsAsync("Default");
+            if (!roleCheck2)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Default"));
+            }
+
+            //Assign Admin role to the main User here we have given our newly registered 
+            //login id for Admin management
+            //IdentityUser user = await UserManager.FindByEmailAsync("tagrading@yeet.com");
+            //var User = new IdentityUser();
+            //await UserManager.RemoveFromRoleAsync(user, "Default");
+            //await UserManager.AddToRoleAsync(user, "Admin");
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -92,6 +135,10 @@ namespace INTEX
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
+
+            CreateUserRoles(services).Wait();
         }
+
+
     }
 }
