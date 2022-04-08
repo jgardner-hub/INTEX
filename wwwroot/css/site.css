@@ -269,9 +269,19 @@ header {
     opacity: .7;
 }
 
+.submit-button {
+    border: 2px solid;
+    background-color: white;
+    color: #5a87c5;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    color:white;
+    background-color: #5a87c5;
+}
+
 /*Privacy*/
-
 privacy-scroll {
-    overflow:scroll;
-
+    overflow: scroll;
 }
