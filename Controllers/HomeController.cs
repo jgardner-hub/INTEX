@@ -109,6 +109,7 @@ namespace INTEX.Controllers
         public IActionResult CrashSummary(string county, int pageNum = 1)
         {
             int pageSize = 100;
+            ViewBag.Action = "CrashSummary";
 
             var x = new CrashesViewModel
             {
@@ -137,7 +138,7 @@ namespace INTEX.Controllers
         public IActionResult AdminCrashSummary(string county, int pageNum = 1)
         {
             int pageSize = 100;
-
+            ViewBag.Action = "AdminCrashSummary";
             var x = new CrashesViewModel
             {
                 Crashes = _context.crashdata
