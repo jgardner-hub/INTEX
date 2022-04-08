@@ -150,7 +150,10 @@ namespace INTEX.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes = _context.crashdata.Count(),
+                    TotalNumCrashes =
+                    (county == null ?
+                    _context.crashdata.Count()
+                    : _context.crashdata.Where(x => x.COUNTY_NAME == county).Count()),
                     CrashesPerPage = pageSize,
                     CurrentPage = pageNum
                 }
