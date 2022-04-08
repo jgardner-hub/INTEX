@@ -136,13 +136,26 @@ namespace INTEX
                     pattern: "Home/CrashSummary/{county}/pg{pageNum}",
                     new { Controller = "Home", action = "CrashSummary" });
 
+                endpoints.MapControllerRoute(
+                    name: "admincountypage",
+                    pattern: "Home/AdminCrashSummary/{county}/pg{pageNum}",
+                    new { Controller = "Home", action = "AdminCrashSummary" });
+
                 endpoints.MapControllerRoute("Paging",
                     "Home/CrashSummary/pg{pageNum}",
                     new { Controller = "Home", action = "CrashSummary", pageNum = 1 });
 
+                endpoints.MapControllerRoute("AdminPaging",
+                    "Home/AdminCrashSummary/pg{pageNum}",
+                    new { Controller = "Home", action = "AdminCrashSummary", pageNum = 1 });
+
                 endpoints.MapControllerRoute("county",
                     "Home/CrashSummary/{county}",
                     new { Controller = "Home", action = "CrashSummary", pageNum = 1 });
+
+                endpoints.MapControllerRoute("admincounty",
+                    "Home/CrashSummary/{county}",
+                    new { Controller = "Home", action = "AdminCrashSummary", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
