@@ -68,24 +68,24 @@
                         </li>
 
                         @*<li class="nav-item">
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("Admin"))
-                {
-                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddCrash">Add Crash</a>
-                }
-            }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddCrash">Add Crash</a>
+                        }
+                    }
 
-        </li>
+                </li>
 
-        <li class="nav-item">
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("Admin"))
-                {
-                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Manage Crashes</a>
-                }
-            }*@
+                <li class="nav-item">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Manage Crashes</a>
+                        }
+                    }*@
 
                         @*</li>*@
                     </ul>
