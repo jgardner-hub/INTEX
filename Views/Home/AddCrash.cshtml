@@ -13,110 +13,109 @@
         <form method="post" asp-controller="Home" asp-action="AddCrash">
 
             <div asp-validation-summary="All"></div>
-            <h1>Please Fill Out All of the Crash Info:</h1>
+            <h1 class="display-4" style="font-weight: bold; font-style: italic; color: white">Crash Severity Calculator</h1>
 
-
-            @if (ViewBag.form == "edit")
-            {
-                <div class="form-group">
-                    <input type="hidden" asp-for="@Model.CRASH_ID" />
-                </div>
-            }
-
-            <label asp-for=@Model.CRASH_DATE>Crash Date:</label>
-            <input type="date" asp-for=@Model.CRASH_DATE /><br />
-
-            <label asp-for=@Model.CRASH_TIME>Crash Time:</label>
-            <input type="time" asp-for=@Model.CRASH_TIME /><br />
-
-            <label asp-for=@Model.ROUTE>Route:</label>
-            <input asp-for=@Model.ROUTE placeholder="i.e. 78" /><br />
-
-            <label asp-for=@Model.MILEPOINT>Milepoint:</label>
-            <input asp-for=@Model.MILEPOINT placeholder="i.e. 80.1" /><br />
-
-            <label asp-for=@Model.LAT_UTM_Y>Latitude:</label>
-            <input asp-for=@Model.LAT_UTM_Y placeholder="i.e. 4485216.624" /><br />
-
-            <label asp-for=@Model.LONG_UTM_X>Longitude:</label>
-            <input asp-for=@Model.LONG_UTM_X placeholder="i.e. 427715.032" /><br />
-
-            <label asp-for=@Model.MAIN_ROAD_NAME>Main Road Name:</label>
-            <input asp-for=@Model.MAIN_ROAD_NAME placeholder="i.e. 700 W 12300 S" /><br />
-
-            <label asp-for=@Model.CITY>City:</label>
-            <input asp-for=@Model.CITY placeholder="LOGAN" /><br />
-
-            <label asp-for=@Model.COUNTY_NAME>County:</label>
-            <select asp-for="@Model.COUNTY_NAME">
-
-                @foreach (string c in ViewBag.Counties)
+                @if (ViewBag.form == "edit")
                 {
-                    <option value="@c">@c</option>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="@Model.CRASH_ID" />
+                    </div>
                 }
-            </select>
 
-            <label asp-for=@Model.CRASH_SEVERITY_ID>Severity:</label>
-            <input type="number" min="1" max="5" asp-for=@Model.CRASH_SEVERITY_ID placeholder="1 - 5" /><br />
+                <label asp-for=@Model.CRASH_DATE>Crash Date:</label>
+                <input type="date" asp-for=@Model.CRASH_DATE /><br /><br />
 
-            <label asp-for=@Model.WORK_ZONE_RELATED>Work Zone Related:</label>
-            <input type="checkbox" asp-for=@Model.WORK_ZONE_RELATED /><br />
+                <label asp-for=@Model.CRASH_TIME>Crash Time:</label>
+                <input type="time" asp-for=@Model.CRASH_TIME /><br /><br />
 
-            <label asp-for=@Model.PEDESTRIAN_INVOLVED>Pedestrian Involved:</label>
-            <input type="checkbox" asp-for=@Model.PEDESTRIAN_INVOLVED /><br />
+                <label asp-for=@Model.ROUTE>Route:</label>
+                <input asp-for=@Model.ROUTE placeholder="i.e. 78" /><br /><br />
 
-            <label asp-for=@Model.BICYCLIST_INVOLVED>Bicyclist Involved:</label>
-            <input type="checkbox" asp-for=@Model.BICYCLIST_INVOLVED /><br />
+                <label asp-for=@Model.MILEPOINT>Milepoint:</label>
+                <input asp-for=@Model.MILEPOINT placeholder="i.e. 80.1" /><br />
 
-            <label asp-for=@Model.MOTORCYCLE_INVOLVED>Motorcyclist Involved:</label>
-            <input type="checkbox" asp-for=@Model.MOTORCYCLE_INVOLVED /><br />
+                <label asp-for=@Model.LAT_UTM_Y>Latitude:</label>
+                <input asp-for=@Model.LAT_UTM_Y placeholder="i.e. 4485216.624" /><br />
 
-            <label asp-for=@Model.IMPROPER_RESTRAINT>Improper Restraint:</label>
-            <input type="checkbox" asp-for=@Model.IMPROPER_RESTRAINT /><br />
+                <label asp-for=@Model.LONG_UTM_X>Longitude:</label>
+                <input asp-for=@Model.LONG_UTM_X placeholder="i.e. 427715.032" /><br />
 
-            <label asp-for=@Model.UNRESTRAINED>Unrestrained:</label>
-            <input type="checkbox" asp-for=@Model.UNRESTRAINED /><br />
+                <label asp-for=@Model.MAIN_ROAD_NAME>Main Road Name:</label>
+                <input asp-for=@Model.MAIN_ROAD_NAME placeholder="i.e. 700 W 12300 S" oninput="this.value = this.value.toUpperCase()" /><br />
 
-            <label asp-for=@Model.DUI>DUI:</label>
-            <input type="checkbox" asp-for=@Model.DUI /><br />
+                <label asp-for=@Model.CITY>City:</label>
+                <input asp-for=@Model.CITY placeholder="LOGAN" oninput="this.value = this.value.toUpperCase()" /><br />
 
-            <label asp-for=@Model.INTERSECTION_RELATED>Intersection Related:</label>
-            <input type="checkbox" asp-for=@Model.INTERSECTION_RELATED /><br />
+                <label asp-for=@Model.COUNTY_NAME>County:</label>
+                <select asp-for="@Model.COUNTY_NAME">
 
-            <label asp-for=@Model.WILD_ANIMAL_RELATED>Wild Animal Related:</label>
-            <input type="checkbox" asp-for=@Model.WILD_ANIMAL_RELATED /><br />
+                    @foreach (string c in ViewBag.Counties)
+                    {
+                        <option value="@c">@c</option>
+                    }
+                </select>
 
-            <label asp-for=@Model.DOMESTIC_ANIMAL_RELATED>Domestic Animal Related:</label>
-            <input type="checkbox" asp-for=@Model.DOMESTIC_ANIMAL_RELATED /><br />
+                <label asp-for=@Model.CRASH_SEVERITY_ID>Severity:</label>
+                <input type="number" min="1" max="5" asp-for=@Model.CRASH_SEVERITY_ID placeholder="1 - 5" /><br />
 
-            <label asp-for=@Model.OVERTURN_ROLLOVER>Overturn Rollover:</label>
-            <input type="checkbox" asp-for=@Model.OVERTURN_ROLLOVER /><br />
+                <label asp-for=@Model.WORK_ZONE_RELATED>Work Zone Related:</label>
+                <input type="checkbox" asp-for=@Model.WORK_ZONE_RELATED /><br />
 
-            <label asp-for=@Model.COMMERCIAL_MOTOR_VEH_INVOLVED>Commercial Motor Vehical Involved:</label>
-            <input type="checkbox" asp-for=@Model.COMMERCIAL_MOTOR_VEH_INVOLVED /><br />
+                <label asp-for=@Model.PEDESTRIAN_INVOLVED>Pedestrian Involved:</label>
+                <input type="checkbox" asp-for=@Model.PEDESTRIAN_INVOLVED /><br />
 
-            <label asp-for=@Model.TEENAGE_DRIVER_INVOLVED>Teenage Driver Involved:</label>
-            <input type="checkbox" asp-for=@Model.TEENAGE_DRIVER_INVOLVED /><br />
+                <label asp-for=@Model.BICYCLIST_INVOLVED>Bicyclist Involved:</label>
+                <input type="checkbox" asp-for=@Model.BICYCLIST_INVOLVED /><br />
 
-            <label asp-for=@Model.OLDER_DRIVER_INVOLVED>Older Driver Involved:</label>
-            <input type="checkbox" asp-for=@Model.OLDER_DRIVER_INVOLVED /><br />
+                <label asp-for=@Model.MOTORCYCLE_INVOLVED>Motorcyclist Involved:</label>
+                <input type="checkbox" asp-for=@Model.MOTORCYCLE_INVOLVED /><br />
 
-            <label asp-for=@Model.NIGHT_DARK_CONDITION>Night Driver Involved:</label>
-            <input type="checkbox" asp-for=@Model.NIGHT_DARK_CONDITION /><br />
+                <label asp-for=@Model.IMPROPER_RESTRAINT>Improper Restraint:</label>
+                <input type="checkbox" asp-for=@Model.IMPROPER_RESTRAINT /><br />
 
-            <label asp-for=@Model.SINGLE_VEHICLE>Single Vehicle:</label>
-            <input type="checkbox" asp-for=@Model.SINGLE_VEHICLE /><br />
+                <label asp-for=@Model.UNRESTRAINED>Unrestrained:</label>
+                <input type="checkbox" asp-for=@Model.UNRESTRAINED /><br />
 
-            <label asp-for=@Model.DISTRACTED_DRIVING>Districted Driving:</label>
-            <input type="checkbox" asp-for=@Model.DISTRACTED_DRIVING /><br />
+                <label asp-for=@Model.DUI>DUI:</label>
+                <input type="checkbox" asp-for=@Model.DUI /><br />
 
-            <label asp-for=@Model.DROWSY_DRIVING>Drowsy Driving:</label>
-            <input type="checkbox" asp-for=@Model.DROWSY_DRIVING /><br />
+                <label asp-for=@Model.INTERSECTION_RELATED>Intersection Related:</label>
+                <input type="checkbox" asp-for=@Model.INTERSECTION_RELATED /><br />
 
-            <label asp-for=@Model.ROADWAY_DEPARTURE>Roadway Departure:</label>
-            <input type="checkbox" asp-for=@Model.ROADWAY_DEPARTURE /><br />
+                <label asp-for=@Model.WILD_ANIMAL_RELATED>Wild Animal Related:</label>
+                <input type="checkbox" asp-for=@Model.WILD_ANIMAL_RELATED /><br />
 
-            <input type="submit" />
+                <label asp-for=@Model.DOMESTIC_ANIMAL_RELATED>Domestic Animal Related:</label>
+                <input type="checkbox" asp-for=@Model.DOMESTIC_ANIMAL_RELATED /><br />
+
+                <label asp-for=@Model.OVERTURN_ROLLOVER>Overturn Rollover:</label>
+                <input type="checkbox" asp-for=@Model.OVERTURN_ROLLOVER /><br />
+
+                <label asp-for=@Model.COMMERCIAL_MOTOR_VEH_INVOLVED>Commercial Motor Vehical Involved:</label>
+                <input type="checkbox" asp-for=@Model.COMMERCIAL_MOTOR_VEH_INVOLVED /><br />
+
+                <label asp-for=@Model.TEENAGE_DRIVER_INVOLVED>Teenage Driver Involved:</label>
+                <input type="checkbox" asp-for=@Model.TEENAGE_DRIVER_INVOLVED /><br />
+
+                <label asp-for=@Model.OLDER_DRIVER_INVOLVED>Older Driver Involved:</label>
+                <input type="checkbox" asp-for=@Model.OLDER_DRIVER_INVOLVED /><br />
+
+                <label asp-for=@Model.NIGHT_DARK_CONDITION>Night Driver Involved:</label>
+                <input type="checkbox" asp-for=@Model.NIGHT_DARK_CONDITION /><br />
+
+                <label asp-for=@Model.SINGLE_VEHICLE>Single Vehicle:</label>
+                <input type="checkbox" asp-for=@Model.SINGLE_VEHICLE /><br />
+
+                <label asp-for=@Model.DISTRACTED_DRIVING>Districted Driving:</label>
+                <input type="checkbox" asp-for=@Model.DISTRACTED_DRIVING /><br />
+
+                <label asp-for=@Model.DROWSY_DRIVING>Drowsy Driving:</label>
+                <input type="checkbox" asp-for=@Model.DROWSY_DRIVING /><br />
+
+                <label asp-for=@Model.ROADWAY_DEPARTURE>Roadway Departure:</label>
+                <input type="checkbox" asp-for=@Model.ROADWAY_DEPARTURE /><br />
+
+                <input type="submit" />
 
         </form>
     </main>

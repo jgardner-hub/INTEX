@@ -6,6 +6,10 @@
 <div class="ourhead">
 
 </div>
+<div class="text-center">
+    <h1 class="display-4" style="font-weight: bold; font-style: italic; color: white">Crash Reports</h1>
+</div>
+<br />
 <div class="container">
     <main role="main" class="pb-3">
         <div class="row">
@@ -13,26 +17,25 @@
                 <vc:filters></vc:filters>
             </div>
             <div class="col-10">
-                <table class="table table-bordered table-striped">
-
+                <table class="table table-bordered table-striped" style="background-color: white; border: 2px solid; border-radius: 20px; border-style: hidden; box-shadow: 0 0 0 2px #5A87C5">
                     <thead class="font-weight-bold">
                         <tr>
-                            <td>Crash Id</td>
-                            <td>Crash Date</td>
-                            <td>County</td>
-                            <td>City</td>
-                            <td>Crash Severity</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">Crash Id</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">Crash Date</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">County</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">City</td>
+                            <td style="border: 2px solid; border-color: #5A87C5">Crash Severity</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var c in Model.Crashes)
                         {
                             <tr>
-                                <td>@c.CRASH_ID</td>
-                                <td>@c.CRASH_DATE</td>
-                                <td>@c.COUNTY_NAME</td>
-                                <td>@c.CITY</td>
-                                <td>@c.CRASH_SEVERITY_ID</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_ID</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_DATE</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.COUNTY_NAME</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CITY</td>
+                                <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_SEVERITY_ID</td>
 
 
                             </tr>
