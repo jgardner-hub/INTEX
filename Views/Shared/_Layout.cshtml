@@ -35,9 +35,17 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Admin
-                            </a>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Admin"))
+                                {
+
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Admin
+                                    </a>
+                                }
+                            }
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                                 @if (User.Identity.IsAuthenticated)
@@ -60,24 +68,24 @@
                         </li>
 
                         @*<li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                if (User.IsInRole("Admin"))
-                                {
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddCrash">Add Crash</a>
-                                }
-                            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddCrash">Add Crash</a>
+                }
+            }
 
-                        </li>
+        </li>
 
-                        <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                if (User.IsInRole("Admin"))
-                                {
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Manage Crashes</a>
-                                }
-                            }*@
+        <li class="nav-item">
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AdminCrashSummary">Manage Crashes</a>
+                }
+            }*@
 
                         @*</li>*@
                     </ul>
