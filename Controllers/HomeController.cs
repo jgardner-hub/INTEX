@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace INTEX.Controllers
 {
@@ -107,7 +108,6 @@ namespace INTEX.Controllers
 
         public IActionResult CrashSummary(string county, int pageNum = 1)
         {
-
             int pageSize = 100;
 
             var x = new CrashesViewModel
@@ -133,7 +133,7 @@ namespace INTEX.Controllers
             return View(x);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminCrashSummary(string county, int pageNum = 1)
         {
             int pageSize = 100;
@@ -176,6 +176,29 @@ namespace INTEX.Controllers
             var prediction = new Prediction { PredictedValue = score.First() };
             ViewBag.predictedvalue = prediction.PredictedValue;
             ViewBag.predictedvalue = Math.Round(ViewBag.PredictedValue);
+
+            if (ViewBag.predictedvalue == 1)
+            {
+                ViewBag.resulttext = "No Injury";
+            }
+            else if (ViewBag.predictedvalue == 2)
+            {
+                ViewBag.resulttext = "Possible Injury";
+            }
+            else if (ViewBag.predictedvalue == 3)
+            {
+                ViewBag.resulttext = "Suspected Minor Injury";
+            }
+            else if (ViewBag.predictedvalue == 4)
+            {
+                ViewBag.resulttext = "Suspected Major Injury";
+            }
+            else
+            {
+                ViewBag.resulttext = "Fatal";
+            }
+
+
             result.Dispose();
 
             return View(data);

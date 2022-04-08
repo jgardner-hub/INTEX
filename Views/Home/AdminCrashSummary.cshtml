@@ -13,6 +13,7 @@
 <br />
 <div class="container">
     <main role="main" class="pb-3">
+
         <div class="row">
             <div class="col-2">
                 <vc:filters></vc:filters>
@@ -31,6 +32,7 @@
                     <tbody>
                         @foreach (var c in Model.Crashes)
                         {
+
                             <tr>
                                 <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_ID</td>
                                 <td style="border: 2px solid; border-color: #5A87C5">@c.CRASH_DATE</td>
@@ -40,6 +42,7 @@
                                 <td style="border: 2px solid; border-color: #5A87C5"><a class="edit-delete" asp-controller="Home" asp-action="Edit" asp-route-CrashId="@c.CRASH_ID">Edit</a></td>
                                 <td style="border: 2px solid; border-color: #5A87C5"><a class="edit-delete" asp-controller="Home" asp-action="Delete" asp-route-CrashId="@c.CRASH_ID">Delete</a></td>
                             </tr>
+
                         }
                     </tbody>
                 </table>

@@ -40,8 +40,11 @@ namespace INTEX
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+
+            });
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
@@ -51,7 +54,7 @@ namespace INTEX
 
             });
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("Models/onnx_intex_model.onnx")
+                new InferenceSession("wwwroot/onnx_intex_model.onnx")
             );
 
             services.AddRazorPages();
