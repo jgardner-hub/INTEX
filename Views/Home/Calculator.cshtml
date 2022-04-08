@@ -11,22 +11,22 @@
 
 </div>
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Calculator Page</h1>
+    <h1 class="display-4" style="font-weight: bold; font-style: italic; color: white">Crash Severity Calculator</h1>
 </div>
-<div class="row pagesection">
+<div class="row pagesection" style="border: 3px solid; border-color: transparent; border-radius: 20px">
 
     <div class="col-7">
         <form method="post" asp-controller="Home" asp-action="Calculator">
             <div class="text-danger" asp-validation-summary="All"></div>
-            <h1>Fill Out All of the Crash Info to Predict Crash Severity:</h1>
+            <h2 style="font-weight: bold">Please Fill Out the Following Info to Predict Crash Severity:</h2>
             <label asp-for="@Model.milepoint">Milepoint Location (1.0-550.0):</label>
-            <input asp-for="@Model.milepoint" placeholder="i.e. 445.5" /><br />
+            <input asp-for="@Model.milepoint" placeholder="i.e. 445.5" style="border-radius:5px"/><br />
             <br />
             <label asp-for="@Model.lat_utm_y">Latitude (in decimal form):</label>
-            <input asp-for="@Model.lat_utm_y" placeholder="i.e. 4650840.961" /><br />
+            <input asp-for="@Model.lat_utm_y" placeholder="i.e. 4650840.961" style="border-radius:5px"/><br />
             <br />
             <label asp-for="@Model.long_utm_x">Longitude (in decimal form):</label>
-            <input asp-for="@Model.long_utm_x" placeholder="i.e. 427714.0392" /><br />
+            <input asp-for="@Model.long_utm_x" placeholder="i.e. 427714.0392" style="border-radius:5px"/><br />
             <br />
             <label asp-for="@Model.work_zone_related" id="work_zone_related">Work Zone Related:</label>
             <input asp-for="@Model.work_zone_related" id="RadioButton1" type="radio" name="work_zone_related" value="1.0" />Yes
@@ -93,11 +93,11 @@
 
     </div>
     <div class="col-5">
-        <div class="card calc-card">
+        <div class="card calc-card" style="border: 4px solid; border-color: #ee7623; border-radius: 20px; border-style: hidden; box-shadow: 0 0 0 2px #ee7623">
             <div class="card-body">
-                <h5 class="card-title">Calculator</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Crash Severity Rating:</h6>
-                <p class="card-text text-danger">@ViewBag.predictedvalue</p>
+                <h1 class="card-title" style="font-style: italic; font-weight: bold; color: #5a87c5">Calculator</h1>
+                <h5 class="card-subtitle mb-2" style="color:black">Crash Severity Rating:</h5>
+                <h1 class="card-title" style="text-align:left; padding-left:40px; padding-top:20px; font-weight:bold">@ViewBag.predictedvalue</h1>
             </div>
         </div>
     </div>

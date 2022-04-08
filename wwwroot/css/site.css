@@ -187,8 +187,6 @@ header {
 }
 
 
-
-
 .ptext {
     position: absolute;
     top: 45%;
@@ -231,6 +229,12 @@ header {
     Overwrite Bootstrap
 */
 
+.nav-link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--ourorange);
+    text-decoration-thickness: .2em;
+}
+
 .btn-primary {
     background-color: var(--ourblue);
     border: var(--ourblue);
@@ -244,11 +248,25 @@ header {
 */
 
 .edit-delete {
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 1.2em;
+    font-weight: 400;
 }
 
 .edit-delete:hover {
     text-decoration-color: var(--ourorange);
     text-decoration-thickness: .2em;
+}
+
+/*Calculator*/
+
+::placeholder {
+    color: var(--ourblue);
+    opacity: .7;
+}
+
+/*Privacy*/
+
+privacy-scroll {
+    overflow:scroll;
+
 }
