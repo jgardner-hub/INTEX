@@ -4,11 +4,11 @@
 @model IEnumerable<string>
 
 <div class="filterbox">
-    <a class="btn btn-primary" asp-controller="Home" asp-action="CrashSummary" asp-route-county="" asp-route-pageNum="1">Home</a>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="@ViewBag.Action" asp-route-county="" asp-route-pageNum="1">Home</a>
 
     @foreach (string c in Model)
     {
-        <a asp-controller="Home" asp-action="CrashSummary" asp-route-county="@c" asp-route-pageNum="1"
+        <a asp-controller="Home" asp-action="@ViewBag.Action" asp-route-county="@c" asp-route-pageNum="1"
            class="btn @(ViewBag.SelectedCounty == c ?  "btn-primary": "btn-secondary")">@c</a>
     }
 </div>
